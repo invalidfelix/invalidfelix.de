@@ -1,16 +1,16 @@
 ---
 interface Props {
-    name: string,
-    href: string
-    path: string
+    name: string;
+    href: string;
+    icon: string;
 }
 
-const { name, href, path }: Props = Astro.props;
+const { name, href, icon }: Props = Astro.props;
 ---
 
 <div class="experience">
-    <a href={href} class="icon-link" target="_blank" rel="noopener noreferrer">
-        <img src=`/experiences/${path}` class="icon" alt={name}/>
+    <a href={href} class="icon-link" target="_blank" rel="noopener noreferrer" title={name}>
+        <img src={icon} class="icon" alt={name}/>
     </a>
 </div>
 
@@ -18,21 +18,25 @@ const { name, href, path }: Props = Astro.props;
     .experience {
         display: flex;
         align-items: center;
-        margin: 1rem 0;
+        justify-content: center;
+        margin: 0.5rem;
     }
 
-    .icon {
-        width: 40px;
-        height: auto;
-        margin-right: 10px;
-
-        display: inline-flex;
-        justify-content: center;
+    .icon-link {
+        display: flex;
         align-items: center;
+        justify-content: center;
         transition: transform 0.2s;
     }
 
-    .icon:hover {
-        transform: scale(1.1);
+    .icon {
+        width: 48px;
+        height: 48px;
+        transition: transform 0.2s;
+        display: block;
+    }
+
+    .icon-link:hover {
+        transform: scale(1.15);
     }
 </style>

@@ -13,8 +13,9 @@ import Experience from '../components/Experience.astro';
         </div>
 
         <ul class="social-list">
-            <Social title="GitHub" href='https://github.com/invalidfelix' path='github.svg' color="#24292e"/>
-            <Social title="Discord" href='https://discord.com/users/1078242409495932969' path='discord.svg' color="#5865F2"/>
+            <Social title="GitHub" href='https://github.com/invalidfelix' icon='https://cdn.simpleicons.org/github/white' color="#24292e"/>
+            <Social title="Discord" href='https://discord.com/users/1078242409495932969' icon='https://cdn.simpleicons.org/discord/white' color="#5865F2"/>
+            <Social title="Email" href='mailto:contact@nykoos.dev' icon='https://cdn.simpleicons.org/gmail/white' color="#D44638"/>
         </ul>
 
         <br>
@@ -22,10 +23,14 @@ import Experience from '../components/Experience.astro';
         <div>
             <h2>Experiences</h2>
             <p> The languages and tools I've already worked with</p>
-            <div class="project-group">
-                <Social title="GitHub" href='https://github.com/invalidfelix' path='github.svg' color="#24292e"/>
-                <Social title="Discord" href='https://discord.com/users/1078242409495932969' path='discord.svg' color="#5865F2"/>
-                <Social title="Email" href='mailto:contact@nykoos.dev' path='envelope.svg' color="#D44638"/>
+            <div class="experience-group">
+                <Experience name="JavaScript" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" icon="https://cdn.simpleicons.org/javascript/F7DF1E"/>
+                <Experience name="Python" href="https://www.python.org/" icon="https://cdn.simpleicons.org/python/3776AB"/>
+                <Experience name="TypeScript" href="https://www.typescriptlang.org/" icon="https://cdn.simpleicons.org/typescript/3178C6"/>
+                <Experience name="PostgreSQL" href="https://www.postgresql.org/" icon="https://cdn.simpleicons.org/postgresql/4169E1"/>
+                <Experience name="Node.js" href="https://nodejs.org/" icon="https://cdn.simpleicons.org/nodedotjs/339933"/>
+                <Experience name="Git" href="https://git-scm.com/" icon="https://cdn.simpleicons.org/git/F05032"/>
+                <Experience name="React" href="https://react.dev/" icon="https://cdn.simpleicons.org/react/61DAFB"/>
             </div>
         </div>
 
@@ -51,12 +56,11 @@ import Experience from '../components/Experience.astro';
         font-size: 20px;
         line-height: 1.6;
 
-        display: flex; /* Enable flexbox for vertical centering */
-        flex-direction: column; /* Arrange items vertically */
-        justify-content: center; /* Center vertically */
-        align-items: center; /* Center horizontally */
-        min-height: 100vh; /* Full viewport height */
-
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
     }
     h1 {
         font-size: 4rem;
@@ -84,46 +88,22 @@ import Experience from '../components/Experience.astro';
         transition: background-position 0.5s ease;
     }
     .text-gradient:hover {
-        background-position: 100%; /* Changes the gradient position smoothly */
+        background-position: 100%;
     }
     .project-group {
         display: flex;
-        flex-wrap: wrap; /* Allows the items to wrap if the space is not enough */
-        gap: 20px; /* Adds space between the project cards */
-        justify-content: center; /* Center the projects horizontally */
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
     }
 
     .experience-group {
         display: flex;
-        flex-wrap: wrap; /* Allows the items to wrap if the space is not enough */
-        gap: 10px; /* Adds space between the project cards */
-        justify-content: center; /* Center the projects horizontally */
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
     }
 
-    .instructions {
-        margin-bottom: 2rem;
-        border: 1px solid rgba(var(--accent-light), 25%);
-        background: linear-gradient(rgba(var(--accent-dark), 66%), rgba(var(--accent-dark), 33%));
-        padding: 1.5rem;
-        border-radius: 8px;
-    }
-    .instructions code {
-        font-size: 0.8em;
-        font-weight: bold;
-        background: rgba(var(--accent-light), 12%);
-        color: rgb(var(--accent-light));
-        border-radius: 4px;
-        padding: 0.3em 0.4em;
-    }
-    .instructions strong {
-        color: rgb(var(--accent-light));
-    }
-    .link-card-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-        gap: 2rem;
-        padding: 0;
-    }
     .center {
         text-align: center;
     }
