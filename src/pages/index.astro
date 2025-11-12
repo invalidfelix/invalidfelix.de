@@ -1,0 +1,147 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Social from '../components/Social.astro';
+import Project from '../components/Project.astro';
+import Experience from '../components/Experience.astro';
+---
+
+<Layout title="Whats up">
+    <main>
+        <h1> Hi, I'm <a class="text-gradient">Felix</a>.</h1>
+        <div class="center">
+            <a style={"margin-bottom: 1rm"}>I'm a <strong>backend developer</strong> and <strong> school student</strong> from Germany.</a>
+        </div>
+
+        <ul class="social-list">
+            <Social title="GitHub" href='https://github.com/invalidfelix' iconClass='fa-brands fa-github' color="#24292e"/>
+            <Social title="Discord" href='https://discord.com/users/1078242409495932969' iconClass='fa-brands fa-discord' color="#5865F2"/>
+        </ul>
+
+        <br>
+
+        <div>
+            <h2>Experiences</h2>
+            <p> The languages and tools I've already worked with</p>
+            <div class="project-group">
+                <Experience name='Python' href='https://python.org/' path='python.svg'/>
+                <Experience name='Typescript' href='https://www.typescriptlang.org/' path='typescript.svg'/>
+                <Experience name='Javascript' href='https://developer.mozilla.org/en-US/docs/Web/JavaScript' path='javascript.svg'/>
+                <Experience name='PostgreSQL' href='https://www.postgresql.org/' path='postgresql.svg'/>
+            </div>
+        </div>
+
+        <div>
+            <h2>Projects</h2>
+            <p> Some of the projects I am currently working on or have worked on in the past</p>
+            <div class="project-group">
+                <Project title="Quantum-Bot" href="https://quantum-bot.net" desc="A Discord bot that offers many features for your server." gradient_start='#3200dc' gradient_end="#13151A"/>
+            </div>
+        </div>
+
+    </main>
+</Layout>
+
+<style>
+    main {
+        margin: auto;
+        padding: 1rem;
+        width: 800px;
+        max-width: calc(100% - 2rem);
+        min-width: 450px;
+        color: white;
+        font-size: 20px;
+        line-height: 1.6;
+
+        display: flex; /* Enable flexbox for vertical centering */
+        flex-direction: column; /* Arrange items vertically */
+        justify-content: center; /* Center vertically */
+        align-items: center; /* Center horizontally */
+        min-height: 100vh; /* Full viewport height */
+
+    }
+    .astro-a {
+        position: absolute;
+        top: -32px;
+        left: 50%;
+        transform: translatex(-50%);
+        width: 220px;
+        height: auto;
+        z-index: -1;
+    }
+    h1 {
+        font-size: 4rem;
+        font-weight: 700;
+        line-height: 1;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        line-height: 1;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    p {
+        text-align: center;
+    }
+    .text-gradient {
+        background-image: var(--accent-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-size: 400%;
+        background-position: 0%;
+        transition: background-position 0.5s ease;
+    }
+    .text-gradient:hover {
+        background-position: 100%; /* Changes the gradient position smoothly */
+    }
+    .project-group {
+        display: flex;
+        flex-wrap: wrap; /* Allows the items to wrap if the space is not enough */
+        gap: 20px; /* Adds space between the project cards */
+        justify-content: center; /* Center the projects horizontally */
+    }
+
+    .experience-group {
+        display: flex;
+        flex-wrap: wrap; /* Allows the items to wrap if the space is not enough */
+        gap: 10px; /* Adds space between the project cards */
+        justify-content: center; /* Center the projects horizontally */
+    }
+
+    .instructions {
+        margin-bottom: 2rem;
+        border: 1px solid rgba(var(--accent-light), 25%);
+        background: linear-gradient(rgba(var(--accent-dark), 66%), rgba(var(--accent-dark), 33%));
+        padding: 1.5rem;
+        border-radius: 8px;
+    }
+    .instructions code {
+        font-size: 0.8em;
+        font-weight: bold;
+        background: rgba(var(--accent-light), 12%);
+        color: rgb(var(--accent-light));
+        border-radius: 4px;
+        padding: 0.3em 0.4em;
+    }
+    .instructions strong {
+        color: rgb(var(--accent-light));
+    }
+    .link-card-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+        gap: 2rem;
+        padding: 0;
+    }
+    .center {
+        text-align: center;
+    }
+    .social-list {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        list-style: none;
+        padding: 0;
+    }
+</style>
