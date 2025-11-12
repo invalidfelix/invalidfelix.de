@@ -58,7 +58,7 @@ import Experience from '../components/Experience.astro';
             </ul>
         </div>
 
-        <audio id="bgMusic" loop preload="none" volume="0.1"></audio>
+        <audio id="bgMusic" loop preload="none"></audio>
 
         <section class="content-section fade-in delay-3" id="experiences">
             <div class="section-header">
@@ -567,7 +567,6 @@ import Experience from '../components/Experience.astro';
 <script>
     const audio = document.getElementById('bgMusic') as HTMLAudioElement;
 
-    // Versuche automatisch abzuspielen
     async function tryAutoplay() {
         try {
             await audio.play();
@@ -576,38 +575,34 @@ import Experience from '../components/Experience.astro';
         }
     }
 
-    // Direkte Stream-URL setzen (laut.fm Format)
     audio.src = 'https://stream.bigtimefm.de/stream.mp3';
     audio.volume = 0.1;
 
-    // Nach kurzem Delay versuchen abzuspielen
     setTimeout(tryAutoplay, 1000);
 
-    // Bei Klick auf die Seite versuchen zu starten
     document.addEventListener('click', () => {
         if (audio.paused) {
             tryAutoplay();
         }
     }, { once: true });
 
-    // Smooth Scroll für Navbar-Links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
+        anchor.addEventListener('click', function (this: HTMLAnchorElement, e: Event) {
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
+            const href = this.getAttribute('href');
+            if (!href) return;
+            const target = document.querySelector(href);
             if (target) {
-                target.scrollIntoView({
+                (target as HTMLElement).scrollIntoView({
                     behavior: 'smooth',
                     block: 'start'
                 });
-                // Schließe Mobile Menu nach Klick
                 navMenu?.classList.remove('active');
                 navToggle?.classList.remove('active');
             }
         });
     });
 
-    // Mobile Menu Toggle
     const navToggle = document.getElementById('navToggle');
     const navMenu = document.getElementById('navMenu');
 
@@ -616,7 +611,6 @@ import Experience from '../components/Experience.astro';
         navToggle?.classList.toggle('active');
     });
 
-    // Schließe Menu bei Klick außerhalb
     document.addEventListener('click', (e) => {
         const target = e.target as HTMLElement;
         if (!target.closest('.nav-container')) {
