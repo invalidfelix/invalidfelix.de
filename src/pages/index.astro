@@ -23,10 +23,9 @@ import Experience from '../components/Experience.astro';
             <h2>Experiences</h2>
             <p> The languages and tools I've already worked with</p>
             <div class="project-group">
-                <Experience name='Python' href='https://python.org/' path='python.svg'/>
-                <Experience name='Typescript' href='https://www.typescriptlang.org/' path='typescript.svg'/>
-                <Experience name='Javascript' href='https://developer.mozilla.org/en-US/docs/Web/JavaScript' path='javascript.svg'/>
-                <Experience name='PostgreSQL' href='https://www.postgresql.org/' path='postgresql.svg'/>
+                <Social title="GitHub" href='https://github.com/invalidfelix' path='github.svg' color="#24292e"/>
+                <Social title="Discord" href='https://discord.com/users/1078242409495932969' path='discord.svg' color="#5865F2"/>
+                <Social title="Email" href='mailto:contact@nykoos.dev' path='envelope.svg' color="#D44638"/>
             </div>
         </div>
 
@@ -58,15 +57,6 @@ import Experience from '../components/Experience.astro';
         align-items: center; /* Center horizontally */
         min-height: 100vh; /* Full viewport height */
 
-    }
-    .astro-a {
-        position: absolute;
-        top: -32px;
-        left: 50%;
-        transform: translatex(-50%);
-        width: 220px;
-        height: auto;
-        z-index: -1;
     }
     h1 {
         font-size: 4rem;
