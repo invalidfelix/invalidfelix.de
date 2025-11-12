@@ -6,23 +6,65 @@ import Experience from '../components/Experience.astro';
 ---
 
 <Layout title="Whats up">
-    <main>
-        <h1> Hi, I'm <span class="text-gradient">Felix</span>.</h1>
-        <div class="center">
-            <span style={"margin-bottom: 1rm"}>I'm a <strong>backend developer</strong> and <strong> school student</strong> from Germany.</span>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="nav-logo">
+                <span class="logo-icon">✨</span>
+                <span>Felix</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+                <span class="hamburger"></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">
+                        <span class="nav-icon">🏠</span>
+                        Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#experiences" class="nav-link">
+                        <span class="nav-icon">💻</span>
+                        Fähigkeiten
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#projects" class="nav-link">
+                        <span class="nav-icon">🚀</span>
+                        Projekte
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://github.com/invalidfelix" target="_blank" class="nav-link nav-link-special">
+                        <span class="nav-icon">⭐</span>
+                        GitHub
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main id="home">
+        <div class="hero-section">
+            <h1 class="fade-in"> Hallo, ich bin <span class="text-gradient">Felix</span>.</h1>
+            <div class="center fade-in delay-1">
+                <p class="subtitle">Ich bin ein <strong>Backend-Entwickler & Frontend-Entwickler</strong> und <strong>Schüler</strong> aus Deutschland.</p>
+            </div>
+
+            <ul class="social-list fade-in delay-3">
+                <Social title="GitHub" href='https://github.com/invalidfelix' icon='https://cdn.simpleicons.org/github/white' color="#24292e"/>
+                <Social title="Discord" href='https://discord.com/users/1078242409495932969' icon='https://cdn.simpleicons.org/discord/white' color="#5865F2"/>
+            </ul>
         </div>
 
-        <ul class="social-list">
-            <Social title="GitHub" href='https://github.com/invalidfelix' icon='https://cdn.simpleicons.org/github/white' color="#24292e"/>
-            <Social title="Discord" href='https://discord.com/users/1078242409495932969' icon='https://cdn.simpleicons.org/discord/white' color="#5865F2"/>
-            <Social title="Email" href='mailto:contact@nykoos.dev' icon='https://cdn.simpleicons.org/gmail/white' color="#D44638"/>
-        </ul>
+        <audio id="bgMusic" loop preload="none" volume="0.1"></audio>
 
-        <br>
-
-        <div>
-            <h2>Experiences</h2>
-            <p> The languages and tools I've already worked with</p>
+        <section class="content-section fade-in delay-3" id="experiences">
+            <div class="section-header">
+                <h2>💻 Erfahrungen</h2>
+                <p class="section-subtitle">Die Sprachen und Tools, mit denen ich bereits gearbeitet habe</p>
+            </div>
             <div class="experience-group">
                 <Experience name="JavaScript" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" icon="https://cdn.simpleicons.org/javascript/F7DF1E"/>
                 <Experience name="Python" href="https://www.python.org/" icon="https://cdn.simpleicons.org/python/3776AB"/>
@@ -32,86 +74,554 @@ import Experience from '../components/Experience.astro';
                 <Experience name="Git" href="https://git-scm.com/" icon="https://cdn.simpleicons.org/git/F05032"/>
                 <Experience name="React" href="https://react.dev/" icon="https://cdn.simpleicons.org/react/61DAFB"/>
             </div>
-        </div>
+        </section>
 
-        <div>
-            <h2>Projects</h2>
-            <p> Some of the projects I am currently working on</p>
-            <div class="project-group">
-                <Project title="Quantum-Bot" href="https://quantum-bot.net" desc="A Discord bot that offers many features for your server." gradient_start='#3200dc' gradient_end="#13151A"/>
+        <section class="content-section fade-in delay-4" id="projects">
+            <div class="section-header">
+                <h2>🚀 Projekt</h2>
+                <p class="section-subtitle">Einige der Projekte, an denen ich derzeit arbeite</p>
             </div>
-        </div>
+            <div class="project-group">
+                <Project title="Quantum-Bot" href="https://quantum-bot.net" desc="Ein Discord-Bot, der viele Features für deinen Server bietet." gradient_start='#3200dc' gradient_end="#13151A" icon="/quantumbot.png"/>
+            </div>
+        </section>
 
     </main>
 </Layout>
 
 <style>
+    /* Navbar */
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: transparent;
+        z-index: 1000;
+        padding: 0.75rem 0;
+    }
+
+    .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .nav-logo {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: white;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        z-index: 1001;
+    }
+
+    .logo-icon {
+        font-size: 1.75rem;
+        animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-5px); }
+    }
+
+    .nav-logo span:not(.logo-icon) {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-size: 200% 200%;
+        animation: gradientShift 5s ease infinite;
+    }
+
+    .nav-logo:hover {
+        transform: scale(1.05);
+    }
+
+    .nav-toggle {
+        display: none;
+        flex-direction: column;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0.5rem;
+        z-index: 1001;
+    }
+
+    .hamburger,
+    .hamburger::before,
+    .hamburger::after {
+        width: 25px;
+        height: 2px;
+        background: white;
+        border-radius: 2px;
+        transition: all 0.3s ease;
+    }
+
+    .hamburger {
+        position: relative;
+    }
+
+    .hamburger::before,
+    .hamburger::after {
+        content: '';
+        position: absolute;
+        left: 0;
+    }
+
+    .hamburger::before {
+        top: -8px;
+    }
+
+    .hamburger::after {
+        top: 8px;
+    }
+
+    .nav-toggle.active .hamburger {
+        background: transparent;
+    }
+
+    .nav-toggle.active .hamburger::before {
+        transform: rotate(45deg);
+        top: 0;
+    }
+
+    .nav-toggle.active .hamburger::after {
+        transform: rotate(-45deg);
+        top: 0;
+    }
+
+    .nav-menu {
+        display: flex;
+        gap: 0.5rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        align-items: center;
+    }
+
+    .nav-item {
+        position: relative;
+    }
+
+    .nav-link {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: rgba(255, 255, 255, 0.85);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 1rem;
+        padding: 0.75rem 1.25rem;
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .nav-link::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        border-radius: 12px;
+    }
+
+    .nav-link:hover::before {
+        opacity: 1;
+    }
+
+    .nav-link:hover {
+        color: white;
+        transform: translateY(-2px);
+    }
+
+    .nav-icon {
+        font-size: 1.2rem;
+        transition: transform 0.3s ease;
+    }
+
+    .nav-link:hover .nav-icon {
+        transform: scale(1.2) rotate(5deg);
+    }
+
+    .nav-link-special {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    }
+
+    .nav-link-special::before {
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%);
+    }
+
+    .nav-link-special:hover {
+        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        transform: translateY(-2px) scale(1.05);
+    }
+
     main {
         margin: auto;
-        padding: 1rem;
-        width: 800px;
+        padding: 6rem 1rem 2rem;
+        width: 900px;
         max-width: calc(100% - 2rem);
-        min-width: 450px;
+        min-width: 350px;
         color: white;
-        font-size: 20px;
+        font-size: 18px;
         line-height: 1.6;
-
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         min-height: 100vh;
+        gap: 4rem;
     }
+
+    .hero-section {
+        text-align: center;
+        width: 100%;
+        padding: 2rem 0;
+    }
+
     h1 {
-        font-size: 4rem;
-        font-weight: 700;
-        line-height: 1;
-        text-align: center;
-        margin-bottom: 1rem;
+        font-size: clamp(2.5rem, 8vw, 5rem);
+        font-weight: 800;
+        line-height: 1.1;
+        margin-bottom: 1.5rem;
+        letter-spacing: -0.02em;
     }
+
+    .subtitle {
+        font-size: clamp(1rem, 2.5vw, 1.25rem);
+        color: rgba(255, 255, 255, 0.85);
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    .content-section {
+        width: 100%;
+        padding: 2rem 0;
+    }
+
+    .section-header {
+        text-align: center;
+        margin-bottom: 2.5rem;
+    }
+
     h2 {
-        font-size: 2rem;
+        font-size: clamp(1.75rem, 4vw, 2.5rem);
         font-weight: 700;
-        line-height: 1;
-        text-align: center;
-        margin-bottom: 1rem;
-    }
-    p {
-        text-align: center;
-    }
-    .text-gradient {
-        background-image: var(--accent-gradient);
+        line-height: 1.2;
+        margin-bottom: 0.75rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        background-size: 400%;
-        background-position: 0%;
-        transition: background-position 0.5s ease;
+        background-clip: text;
     }
-    .text-gradient:hover {
-        background-position: 100%;
+
+    .section-subtitle {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: clamp(0.9rem, 2vw, 1.1rem);
+        margin: 0;
     }
+
+    .text-gradient {
+        background-image: linear-gradient(135deg, #8E2DE2 0%, #4A00E0 50%, #00DBDE 100%);
+
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-size: 200% 200%;
+        background-position: 0% 50%;
+        animation: gradientShift 5s ease infinite;
+    }
+
+    @keyframes gradientShift {
+        0%, 100% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+    }
+
     .project-group {
         display: flex;
         flex-wrap: wrap;
-        gap: 20px;
+        gap: 2rem;
         justify-content: center;
+        padding: 1rem 0;
     }
 
     .experience-group {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        justify-content: center;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+        gap: 1.5rem;
+        justify-items: center;
+        max-width: 700px;
+        margin: 0 auto;
+        padding: 1rem;
     }
 
     .center {
         text-align: center;
+        margin: 1rem 0;
     }
+
     .social-list {
         display: flex;
         justify-content: center;
-        gap: 2rem;
+        gap: 1.5rem;
         list-style: none;
         padding: 0;
+        margin-top: 2.5rem;
+        flex-wrap: wrap;
+    }
+
+    /* Music Player */
+    .music-player {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin: 2rem auto;
+        padding: 1rem 1.5rem;
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border-radius: 50px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        max-width: fit-content;
+        transition: all 0.3s ease;
+    }
+
+    .music-player:hover {
+        background: rgba(255, 255, 255, 0.08);
+        transform: translateY(-2px);
+    }
+
+    .music-info {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        min-width: 150px;
+    }
+
+    .play-button {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        flex-shrink: 0;
+    }
+
+    .play-button:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+    }
+
+    .play-button:active {
+        transform: scale(0.95);
+    }
+
+    .music-text {
+        font-size: 1rem;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    .volume-slider {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 100%;
+        height: 4px;
+        border-radius: 2px;
+        background: rgba(255, 255, 255, 0.2);
+        outline: none;
+        cursor: pointer;
+    }
+
+    .volume-slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        cursor: pointer;
+        box-shadow: 0 2px 8px rgba(102, 126, 234, 0.5);
+        transition: all 0.2s ease;
+    }
+
+    .volume-slider::-webkit-slider-thumb:hover {
+        transform: scale(1.2);
+        box-shadow: 0 3px 12px rgba(102, 126, 234, 0.7);
+    }
+
+    .volume-slider::-moz-range-thumb {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        cursor: pointer;
+        border: none;
+        box-shadow: 0 2px 8px rgba(102, 126, 234, 0.5);
+        transition: all 0.2s ease;
+    }
+
+    .volume-slider::-moz-range-thumb:hover {
+        transform: scale(1.2);
+        box-shadow: 0 3px 12px rgba(102, 126, 234, 0.7);
+    }
+
+    /* Fade in animations */
+    .fade-in {
+        opacity: 0;
+        animation: fadeInUp 0.8s ease forwards;
+    }
+
+    .delay-1 { animation-delay: 0.2s; }
+    .delay-2 { animation-delay: 0.4s; }
+    .delay-3 { animation-delay: 0.6s; }
+    .delay-4 { animation-delay: 0.8s; }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+        .nav-toggle {
+            display: flex;
+        }
+
+        .nav-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 280px;
+            height: 100vh;
+            background: rgba(13, 15, 26, 0.95);
+            backdrop-filter: blur(20px);
+            flex-direction: column;
+            padding: 6rem 2rem 2rem;
+            gap: 0.5rem;
+            transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: -5px 0 30px rgba(0, 0, 0, 0.5);
+            border-left: 1px solid rgba(102, 126, 234, 0.3);
+        }
+
+        .nav-menu.active {
+            right: 0;
+        }
+
+        .nav-link {
+            width: 100%;
+            justify-content: flex-start;
+            padding: 1rem 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .nav-icon {
+            font-size: 1.4rem;
+        }
+
+        .nav-container {
+            padding: 0 1rem;
+        }
+
+        main {
+            gap: 3rem;
+            padding: 5rem 1rem 1rem;
+        }
+
+        .experience-group {
+            grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+            gap: 1rem;
+        }
+
+        .social-list {
+            gap: 1rem;
+        }
     }
 </style>
+
+<script>
+    const audio = document.getElementById('bgMusic') as HTMLAudioElement;
+
+    // Versuche automatisch abzuspielen
+    async function tryAutoplay() {
+        try {
+            await audio.play();
+        } catch (error) {
+            console.log('Autoplay wurde blockiert.');
+        }
+    }
+
+    // Direkte Stream-URL setzen (laut.fm Format)
+    audio.src = 'https://stream.bigtimefm.de/stream.mp3';
+    audio.volume = 0.1;
+
+    // Nach kurzem Delay versuchen abzuspielen
+    setTimeout(tryAutoplay, 1000);
+
+    // Bei Klick auf die Seite versuchen zu starten
+    document.addEventListener('click', () => {
+        if (audio.paused) {
+            tryAutoplay();
+        }
+    }, { once: true });
+
+    // Smooth Scroll für Navbar-Links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                // Schließe Mobile Menu nach Klick
+                navMenu?.classList.remove('active');
+                navToggle?.classList.remove('active');
+            }
+        });
+    });
+
+    // Mobile Menu Toggle
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
+
+    navToggle?.addEventListener('click', () => {
+        navMenu?.classList.toggle('active');
+        navToggle?.classList.toggle('active');
+    });
+
+    // Schließe Menu bei Klick außerhalb
+    document.addEventListener('click', (e) => {
+        const target = e.target as HTMLElement;
+        if (!target.closest('.nav-container')) {
+            navMenu?.classList.remove('active');
+            navToggle?.classList.remove('active');
+        }
+    });
+</script>
