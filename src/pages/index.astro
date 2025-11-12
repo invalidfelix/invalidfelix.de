@@ -578,7 +578,7 @@ import Experience from '../components/Experience.astro';
     audio.src = 'https://stream.bigtimefm.de/stream.mp3';
     audio.volume = 0.1;
 
-    setTimeout(tryAutoplay, 1000);
+    tryAutoplay()
 
     document.addEventListener('click', () => {
         if (audio.paused) {
