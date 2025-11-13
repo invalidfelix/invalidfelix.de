@@ -49,7 +49,8 @@ import Experience from '../components/Experience.astro';
         <div class="hero-section">
             <h1 class="fade-in"> Hallo, ich bin <span class="text-gradient">Felix</span>.</h1>
             <div class="center fade-in delay-1">
-                <p class="subtitle">Ich bin ein <strong>Backend-Entwickler & Frontend-Entwickler</strong> und <strong>Schüler</strong></p>
+                <p class="subtitle">Ich bin <strong>Backend- und Frontend-Entwickler</strong> und besuche derzeit die <strong>Berufsschule</strong>.</p>
+
             </div>
 
             <ul class="social-list fade-in delay-3">
@@ -565,9 +566,10 @@ import Experience from '../components/Experience.astro';
 </style>
 
 <script>
-    const audio = document.getElementById('bgMusic') as HTMLAudioElement;
+    const audio = document.getElementById('bgMusic');
 
     async function tryAutoplay() {
+        if (!(audio instanceof HTMLAudioElement)) return;
         try {
             await audio.play();
         } catch (error) {
@@ -575,10 +577,13 @@ import Experience from '../components/Experience.astro';
         }
     }
 
-    audio.src = 'https://stream.bigtimefm.de/stream.mp3';
-    audio.volume = 0.1;
-
-    tryAutoplay()
+    if (audio instanceof HTMLAudioElement) {
+        audio.src = 'https://stream.bigtimefm.de/stream.mp3';
+        audio.volume = 0.1;
+        tryAutoplay();
+    } else {
+        console.warn('Audio element #bgMusic fehlt oder ist kein HTMLAudioElement.');
+    }
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (this: HTMLAnchorElement, e: Event) {
