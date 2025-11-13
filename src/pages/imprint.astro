@@ -1,0 +1,135 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+---
+
+<Layout title="Impressum">
+
+    <Navbar />
+
+    <main class="page-wrapper fade-in">
+        <h1 class="title">Impressum</h1>
+
+        <section class="card">
+            <h2 class="subtitle">Angaben gemäß § 5 TMG</h2>
+
+            <p>
+                Felix Schneider<br />
+                Thomas Müntzer Siedlung 1<br />
+                09661 Hainichen<br />
+                Sachsen, Deutschland
+            </p>
+
+            <h3 class="section-title">Kontakt</h3>
+            <p>Email: felix.schneider008@outlook.de</p>
+
+            <h3 class="section-title">Verantwortlich nach § 18 Abs. 2 MStV</h3>
+            <p>Felix Schneider (Adresse wie oben)</p>
+        </section>
+
+        <section class="card">
+            <h2 class="subtitle">Haftung für Inhalte</h2>
+            <p class="text-muted">
+                Als Diensteanbieter bin ich gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten
+                nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG bin ich jedoch nicht
+                verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach
+                Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
+            </p>
+        </section>
+
+        <section class="card">
+            <h2 class="subtitle">Urheberrecht</h2>
+            <p class="text-muted">
+                Die durch den Betreiber erstellten Inhalte und Werke auf dieser Website unterliegen
+                dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung und Verbreitung außerhalb
+                der Grenzen des Urheberrechts bedürfen der schriftlichen Zustimmung des Autors.
+            </p>
+        </section>
+    </main>
+</Layout>
+
+<style>
+    .page-wrapper {
+        margin: auto;
+        padding: 8rem 1rem 4rem;
+        max-width: 880px;
+        color: white;
+        line-height: 1.75;
+    }
+
+    .title {
+        font-size: clamp(2.8rem, 7vw, 4.5rem);
+        font-weight: 800;
+        margin-bottom: 3rem;
+        background: linear-gradient(135deg, #8E2DE2 0%, #4A00E0 50%, #00DBDE 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-align: center;
+        animation: glow 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+        0% { text-shadow: 0 0 10px rgba(129,63,202,0.3); }
+        100% { text-shadow: 0 0 25px rgba(0,219,222,0.4); }
+    }
+
+    .card {
+        background: rgba(255,255,255,0.06);
+        padding: 2.5rem;
+        border-radius: 1.2rem;
+        margin-bottom: 2.5rem;
+        border: 1.5px solid rgba(255,255,255,0.12);
+        backdrop-filter: blur(14px);
+        box-shadow: 0 10px 40px rgba(0,0,0,0.35),
+        inset 0 0 15px rgba(255,255,255,0.05);
+        transition: transform .3s ease, box-shadow .3s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 15px 50px rgba(0,0,0,0.45),
+        inset 0 0 25px rgba(255,255,255,0.08);
+    }
+
+    .subtitle {
+        font-size: 1.7rem;
+        font-weight: 700;
+        margin-bottom: 1.2rem;
+        background: linear-gradient(135deg,#667eea,#764ba2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .section-title {
+        font-size: 1.35rem;
+        font-weight: 600;
+        margin-top: 2rem;
+        margin-bottom: 0.7rem;
+        position: relative;
+    }
+
+    .section-title::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -5px;
+        width: 45px;
+        height: 3px;
+        background: linear-gradient(135deg,#667eea,#764ba2);
+        border-radius: 2px;
+    }
+
+    .text-muted {
+        color: rgba(255,255,255,0.78);
+    }
+
+    .fade-in {
+        opacity: 0;
+        animation: fade .7s ease forwards;
+    }
+
+    @keyframes fade {
+        from { opacity: 0; transform: translateY(25px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
